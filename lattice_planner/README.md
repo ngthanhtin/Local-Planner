@@ -27,7 +27,7 @@ roslaunch lattice_planner lattice_planner.launch
 
 ## Results show
 
-![image](https://github.com/yangmingustb/localPlanner/tree/master/lattice_planner/latticeGraph/1.png)
+![Image text](https://github.com/yangmingustb/localPlanner/tree/master/lattice_planner/latticeGraph/1.png)
 
 ![image](https://github.com/yangmingustb/localPlanner/tree/master/lattice_planner/latticeGraph/2.png)
 
