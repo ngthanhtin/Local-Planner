@@ -25,11 +25,13 @@ roslaunch reference_line refLine.launch
 
 roslaunch lattice_planner lattice_planner.launch 
 
-## Results show
+
 
 ![avatar](https://github.com/yangmingustb/localPlanner/tree/master/lattice_planner/latticeGraph/1.png)
 
+
 ![avatar](https://github.com/yangmingustb/localPlanner/tree/master/lattice_planner/latticeGraph/2.png)
+
 
 ![avatar](https://github.com/yangmingustb/localPlanner/tree/master/lattice_planner/latticeGraph/3.png)
 
