@@ -1,4 +1,4 @@
-# latticePlanner
+# LatticePlanner
 author:ming.ustb@outlook.com
 
 ## Requirements
@@ -15,29 +15,23 @@ sudo cp -r /usr/include/eigen3/Eigen /usr/include
 
 libccd   https://github.com/danfis/libccd
 
-## algorithms
-1 calculate kappa
+## Algorithms
 
-2 calculate heading
 
-3 sampling in the frenet coordinate system
+## How to run
 
-4 Dijkstra's algorithm
-
-5 cubic polynomials in the frenet coordinate system
-
-## how to run
-
-you should change the coefficients.csv's path.
-
-the current path is "/home/ming/coefficients_test.csv"
 
 roslaunch reference_line refLine.launch 
 
 roslaunch lattice_planner lattice_planner.launch 
 
+## Results show
 
-### 优化思路，改成指针
+![Image](https://github.com/yangmingustb/localPlanner/tree/master/lattice_planner/latticeGraph/1.png)
+![Image](https://github.com/yangmingustb/localPlanner/tree/master/lattice_planner/latticeGraph/2.png)
+![Image](https://github.com/yangmingustb/localPlanner/tree/master/lattice_planner/latticeGraph/3.png)
+
+
 
 
 
