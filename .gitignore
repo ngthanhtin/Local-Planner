@@ -1,0 +1,4 @@
+*.pdf
+latticePlannerDoc/
+.idea/
+.vscode/
