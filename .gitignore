@@ -1,6 +1,4 @@
 *.pdf
 latticePlannerDoc/
-.idea/
-.vscode/
-/.idea
-/.vscode
+.idea
+.vscode
