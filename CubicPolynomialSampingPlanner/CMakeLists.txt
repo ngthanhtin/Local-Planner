@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(lattice_planner)
+project(CubicPolynomialSampingPlanner)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 add_compile_options(-std=c++11)
@@ -149,8 +149,8 @@ ${PCL_INCLUDE_DIRS}
 ## The recommended prefix ensures that target names across packages don't collide
 # add_library()
 add_executable(
-lattice_planner 
-src/lattice_planner_node.cpp 
+local_planner 
+src/local_planner_node.cpp 
 src/pathPlanner/latticePlanner.cpp 
 src/FrenetMath/cubicPolynomial.cpp
 src/FrenetMath/costFunctions.h
@@ -180,10 +180,10 @@ src/FrenetMath/selfType.cpp
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-add_dependencies(lattice_planner ${PROJECT_NAME})
+add_dependencies(local_planner ${PROJECT_NAME})
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(lattice_planner   ${catkin_LIBRARIES} ${PCL_LIBRARIES})
+target_link_libraries(local_planner   ${catkin_LIBRARIES} ${PCL_LIBRARIES})
 
 link_directories(${PCL_LIBRARY_DIRS})
 

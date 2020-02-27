@@ -142,7 +142,7 @@ private:
     double d_circle = 2.0;
     double obstacle_inflation = 1.5;
     int longitudinal_num = 5;
-    int lateral_num = 9;  // 横向采样个数
+    int lateral_num = 20 ;  // 横向采样个数
     double longitudinal_step = 20.0;
     double lateral_step = 0.5;
     double lane_width_ = 3.75;

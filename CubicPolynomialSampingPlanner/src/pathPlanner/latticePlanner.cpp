@@ -35,12 +35,12 @@ Dijkstra::Dijkstra(std::vector<CubicCoefficients> &coefficients){
 	nh.getParam("/lattice_planner/r_circle", r_circle);
 	nh.getParam("/lattice_planner/d_circle", d_circle);
 	nh.getParam("/lattice_planner/obstacle_inflation", obstacle_inflation);
-	nh.getParam("/lattice_planner/longitudinal_num", longitudinal_num);
-	nh.getParam("/lattice_planner/lateral_num", lateral_num);
+	nh.getParam("/localPlanner/longitudinal_num", longitudinal_num);
+	nh.getParam("/localPlanner/lateral_num", lateral_num);
 	nh.getParam("/lattice_planner/longitudinal_step", longitudinal_step);
 	nh.getParam("/lattice_planner/lateral_step", lateral_step);
 	nh.getParam("/lattice_planner/lane_width", lane_width_);
-    ROS_INFO("/lattice_planner/longitudinal_num: %d", longitudinal_num);
+    ROS_INFO("lattice_planner/lateral_num: %d", lateral_num);
 
     SampleNumberOnOneSide = lateral_num / 2;    // sampling number on one side of the reference line
     // s0 = FrenetStart_.s;
@@ -69,8 +69,6 @@ Dijkstra::Dijkstra(std::vector<CubicCoefficients> &coefficients){
     // 最后一列的编号
     last_column_id = {lateral_num * (longitudinal_num - 1) + 1, lateral_num * longitudinal_num};  
     
-
-    // cost_ = coefficients_;
     
     frtToCrt_.setParameters(coefficients_);
     cost_.setParameters(coefficients_,refLineRho_,obstacles_, frtToCrt_);
@@ -331,7 +329,6 @@ void Dijkstra::samplingNodes(){
 	for (int i=0; i<longitudinal_num; i++){
 		double x_i = (i + 1) * longitudinal_step + nodeStart_.s_;
 
-        // std::vector<std::array<double, 3> > lateral_nodes;
 		for (int j=0; j< lateral_num; j++){
 			double y_i = (j - SampleNumberOnOneSide) * lateral_step+ refLineRho_;
 			// std::array<double, 3> tmp_node = {{x_i, y_i, 0.0 * M_PI / 180.0}};

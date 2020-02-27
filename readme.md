@@ -1,7 +1,7 @@
 # This repository is dedicated to collecting the latest planners which are developed in ROS.
 
 ## hybrid a star planner by KTH
-<http://karlkurzer.github.io/path_planner>
+<https://github.com/karlkurzer/path_planner.git>
 
 ## hybrid a star planner by APOLLO
 
