@@ -1,23 +1,23 @@
 # This repository is dedicated to collecting the latest planners which are developed in ROS.
 
-## hybrid a star planner by KTH
+1. hybrid a star planner by KTH
 <https://github.com/karlkurzer/path_planner.git>
 
-## hybrid a star planner by APOLLO
+1. hybrid a star planner by APOLLO
 
-## hybrid a star planner by HKUST
+1. hybrid a star planner by HKUST
 
-## CUBIC polynomial sampling planner based a reference line 
-The lattice planner contains two ros nodes, one for generating a road reference curve and one for searching a feasible path.
+1. CUBIC polynomial sampling planner based a reference line   
+    * The lattice planner contains two ros nodes, one for generating a road reference curve and one for searching a feasible path.
 
-## A Star planner
+1. A Star planner
 
-## frenet lattice planner
+1. frenet lattice planner
 
-## state lattice planner
+1. state lattice planner
 
-## RRT planner
+1. RRT planner
 
-## spiral planner
+1. spiral planner
 
 

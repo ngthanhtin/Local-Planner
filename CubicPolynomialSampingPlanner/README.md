@@ -2,18 +2,18 @@
 author:ming.ustb@outlook.com
 
 ## Requirements
-   eigen3
 
-sudo apt-get install libeigen3-dev
+1. eigen3
 
-sudo cp -r /usr/local/include/eigen3/Eigen /usr/local/include 
+   sudo apt-get install libeigen3-dev
 
-or 
+   sudo cp -r /usr/local/include/eigen3/Eigen /usr/local/include 
 
-sudo cp -r /usr/include/eigen3/Eigen /usr/include 
+   or 
 
+   sudo cp -r /usr/include/eigen3/Eigen /usr/include 
 
-libccd   https://github.com/danfis/libccd
+2. libccd   https://github.com/danfis/libccd
 
 ## Algorithms
 
@@ -27,15 +27,15 @@ roslaunch lattice_planner lattice_planner.launch
 
 
 
-![Image](https://github.com/yangmingustb/localPlanner/blob/master/lattice_planner/latticeGraph/1.png)
+![Image](https://github.com/yangmingustb/localPlanner/blob/master/CubicPolynomialSampingPlanner/latticeGraph/1.png)
 
 
 
 
-![Image](https://github.com/yangmingustb/localPlanner/blob/master/lattice_planner/latticeGraph/2.png)
+![Image](https://github.com/yangmingustb/localPlanner/blob/master/CubicPolynomialSampingPlanner/latticeGraph/2.png)
 
 
-![Image](https://github.com/yangmingustb/localPlanner/blob/master/lattice_planner/latticeGraph/3.png)
+![Image](https://github.com/yangmingustb/localPlanner/blob/master/CubicPolynomialSampingPlanner/latticeGraph/3.png)
 
 
 
