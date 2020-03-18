@@ -1,3 +1,6 @@
 [submodule "Fast-Planner"]
 	path = Fast-Planner
 	url = https://github.com/HKUST-Aerial-Robotics/Fast-Planner.git
+[submodule "hybridAStarPlannerByKTH/path_planner"]
+	path = hybridAStarPlannerByKTH/path_planner
+	url = git@github.com:karlkurzer/path_planner.git
