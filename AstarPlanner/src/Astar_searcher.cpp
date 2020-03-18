@@ -310,9 +310,6 @@ vector<Vector2d> AstarPathFinder::getPath()
 {
     vector<Vector2d> path;
     vector<Node2DPtr> gridPath;
-    path.clear();
-    gridPath.clear();
-
     // trace back from the curretnt nodePtr to get all nodes along the path
     gridPath.push_back(terminatePtr);
     auto currentPtr = terminatePtr;
@@ -350,7 +347,7 @@ void AstarPathFinder::setStartCallback(
     start_pub.publish(startRviz);
     start = *begin;
     ROS_INFO("[node] receive the planning start");
-    deleteVariablesData();
+    
     makePlan(); 
 }
 
@@ -375,7 +372,6 @@ void AstarPathFinder::setGoalCallback(
     goal_pub.publish(goalRviz);
 
     ROS_INFO("[node] receive the planning target");
-    deleteVariablesData();
     makePlan(); 
 }
 
@@ -398,6 +394,7 @@ void AstarPathFinder::makePlan()
         ROS_INFO("start:[%f,%f]", start_pt(0), start_pt(1));
         ROS_INFO("goal:[%f,%f]", goal_pt(0), goal_pt(1));
         //Call A* to search for a path
+        deleteVariablesData();
         AstarGraphSearch();
 
         //Retrieve the path
@@ -409,7 +406,7 @@ void AstarPathFinder::makePlan()
         visGridPath();
         //Reset map for next call
         resetUsedGrids();
-        deleteVariablesData();
+        
     }else{
         ROS_INFO("missing valid goal or start");
     }
@@ -421,7 +418,7 @@ void AstarPathFinder::visGridPath()
 {   
     visualization_msgs::Marker pathVehicle;
     int id=0;
-    for(auto i=gridPath_.cbegin();i<gridPath_.cend();i++){
+    for(auto i=0;i<gridPath_.size();i++){
 
         pathVehicle.header.frame_id = "/map";
         pathVehicle.header.stamp = ros::Time(0);
@@ -436,8 +433,8 @@ void AstarPathFinder::visGridPath()
         pathVehicle.color.g = 0.0/255.0;
         pathVehicle.color.b = 0.0/255.0;
 
-        pathVehicle.pose.position.x = (*i)(0);
-        pathVehicle.pose.position.y = (*i)(1);
+        pathVehicle.pose.position.x = gridPath_[i](0);
+        pathVehicle.pose.position.y = gridPath_[i](1);
         pathVehicle.pose.position.z = 0;
         path_in_rviz_.markers.push_back(pathVehicle);
         id++;
@@ -453,7 +450,7 @@ void AstarPathFinder::visVisitedNode()
 {   
     visualization_msgs::Marker pathVehicle;
     int id=0;
-    for(auto i=visitedNotes_.cbegin();i<visitedNotes_.cend();i++){
+    for(auto i=0;i<visitedNotes_.size();i++){
 
         pathVehicle.header.frame_id = "/map";
         pathVehicle.header.stamp = ros::Time(0);
@@ -468,8 +465,8 @@ void AstarPathFinder::visVisitedNode()
         pathVehicle.color.g = 255.0/255.0;
         pathVehicle.color.b = 2550.0/255.0;
 
-        pathVehicle.pose.position.x = (*i)(0);
-        pathVehicle.pose.position.y = (*i)(1);
+        pathVehicle.pose.position.x = visitedNotes_[i](0);
+        pathVehicle.pose.position.y = visitedNotes_[i](1);
         pathVehicle.pose.position.z = 0;
         visited_notes_in_rviz_.markers.push_back(pathVehicle);
         id++;
@@ -487,5 +484,6 @@ void AstarPathFinder::deleteVariablesData(){
     visitedNotes_.clear();
     //openSet is the open_list implemented through multimap in STL library
     openSet.clear();
+    terminatePtr = NULL;
 
 }
