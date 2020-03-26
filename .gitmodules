@@ -4,3 +4,6 @@
 [submodule "hybridAStarPlannerByKTH/path_planner"]
 	path = hybridAStarPlannerByKTH/path_planner
 	url = git@github.com:karlkurzer/path_planner.git
+[submodule "simplePlannerRepo/motionplanning"]
+	path = simplePlannerRepo/motionplanning
+	url = git@github.com:dawnjeanh/motionplanning.git
