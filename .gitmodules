@@ -1,0 +1,3 @@
+[submodule "src/hybrid_astar_planner_kth"]
+	path = src/hybrid_astar_planner_kth
+	url = git@github.com:karlkurzer/path_planner.git

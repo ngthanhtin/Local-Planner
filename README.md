@@ -2,6 +2,12 @@
 
 This repository is dedicated to collecting the latest planners which are developed in ROS.
 
+## Clone this project
+
+```
+git clone --recursive git@github.com:yangmingustb/Local-Planner.git
+```
+
 ## Dependencies
 * C++11 standard, use Rviz to show algorithm, so you should install [ROS](https://www.ros.org/).
 * map_server
@@ -12,11 +18,17 @@ This repository is dedicated to collecting the latest planners which are develop
 
 I will write an installation srcipt to install these requirements.
 
+run the script
+```
+install_all_dependencies.sh
+```
+
 ## how to use
-1. put this package in your ros workspace, e.g. ~/catkin_ws/src/
-2. cd ~/catkin_ws and catkin_make
+1. cd Local-Planner
+2. catkin_make
 3. source devel/setup.bash
-4. launch script, e.g. roslaunch AstarPlanner a_star_planner.launch
+4. launch script, e.g.  
+```roslaunch astar_planner a_star_planner.launch```
 
 ## algorithms
 1. hybrid a star planner by KTH  

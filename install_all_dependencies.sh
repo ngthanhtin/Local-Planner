@@ -6,3 +6,6 @@ bash ${CURRENT_DIR}/install_eigen3.sh
 
 echo "install map_server"
 bash ${CURRENT_DIR}/install_map_server.sh
+
+echo "install ompl"
+bash ${CURRENT_DIR}/install_ompl.sh
