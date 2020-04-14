@@ -2,3 +2,5 @@
 latticePlannerDoc/
 .idea
 .vscode
+build/
+devel/

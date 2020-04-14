@@ -2,7 +2,7 @@
 
 
     <!-- CubicPolynomialSampingPlanner -->
-    <node pkg="CubicPolynomialSampingPlanner" type="local_planner" name="localPlanner" output="screen" required = "true">
+    <node pkg="cubic_polynomial_planner" type="local_planner" name="localPlanner" output="screen" required = "true">
     <!-- <rosparam file="$(find CubicPolynomialSampingPlanner)/launch/lattice_planner_para.yaml" 
     # command="load" ns="lattice_planner" />
     -->
@@ -28,6 +28,6 @@
 
     </node>
     <!-- 运行rviz -->
-    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find CubicPolynomialSampingPlanner)/launch/config.rviz"/>
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find cubic_polynomial_planner)/launch/config.rviz"/>
 
 </launch>

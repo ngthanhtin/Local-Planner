@@ -5,8 +5,6 @@
 #ifndef LATTICEPLANNER_CUBICSPLINE_H
 #define LATTICEPLANNER_CUBICSPLINE_H
 
-
-
 #include <iostream>
 #include <vector>
 #include <array>

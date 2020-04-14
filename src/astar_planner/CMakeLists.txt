@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(reference_line)
+project(astar_planner)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 add_compile_options(-std=c++11)
@@ -11,7 +11,12 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+  visualization_msgs 
 )
+
+find_package(Eigen3 REQUIRED)
+find_package(PCL REQUIRED)
+set(Eigen3_INCLUDE_DIRS ${EIGEN3_INCLUDE_DIR})
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -103,8 +108,9 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-INCLUDE_DIRS include
-#  LIBRARIES reference_line
+ INCLUDE_DIRS include
+ 
+#  LIBRARIES AstarPlanner
 #  CATKIN_DEPENDS roscpp rospy std_msgs
 #  DEPENDS system_lib
 )
@@ -118,12 +124,13 @@ INCLUDE_DIRS include
 include_directories(
 include
   ${catkin_INCLUDE_DIRS}
-
+  ${Eigen3_INCLUDE_DIRS}
+  include
 )
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/reference_line.cpp
+#   src/${PROJECT_NAME}/AstarPlanner.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -134,11 +141,9 @@ include
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(reference_arclength_node 
-src/reference_arclength_node.cpp
-src/cubicSpline.cpp 
-src/referenceLine.cpp
-
+add_executable(${PROJECT_NAME}_node 
+  src/demo_node.cpp
+  src/Astar_searcher.cpp
 )
 
 ## Rename C++ executable without prefix
@@ -149,14 +154,13 @@ src/referenceLine.cpp
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-# add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(reference_arclength_node
+target_link_libraries(${PROJECT_NAME}_node
   ${catkin_LIBRARIES}
- )
+)
 
-add_dependencies(reference_arclength_node ${PROJECT_NAME}_generate_messages_cpp )
 #############
 ## Install ##
 #############
@@ -171,11 +175,18 @@ add_dependencies(reference_arclength_node ${PROJECT_NAME}_generate_messages_cpp 
 #   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 # )
 
-## Mark executables and/or libraries for installation
-# install(TARGETS ${PROJECT_NAME} ${PROJECT_NAME}_node
+## Mark executables for installation
+## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_executables.html
+# install(TARGETS ${PROJECT_NAME}_node
+#   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+# )
+
+## Mark libraries for installation
+## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_libraries.html
+# install(TARGETS ${PROJECT_NAME}
 #   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-#   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+#   RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
 # )
 
 ## Mark cpp header files for installation
@@ -197,7 +208,7 @@ add_dependencies(reference_arclength_node ${PROJECT_NAME}_generate_messages_cpp 
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_reference_line.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_AstarPlanner.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
